@@ -13,7 +13,6 @@ const userRouter=require('./routes/user')
 require("dotenv").config();
 
 const app=express()
-const { createProxyMiddleware } = require('http-proxy-middleware');
 
 
 const port =process.env.PORT || 5000;
@@ -36,13 +35,7 @@ app.use(express.json({ limit: '30mb',extended:true }));
 app.use(express.urlencoded({ extended: true, limit: '30mb' }));
 app.use(methodOverride('_method'));
 app.use(express.json());
-app.use(
-  '/users',
-  createProxyMiddleware({
-    target: 'https://chez-ardi.onrender.com/',
-    changeOrigin: true,
-  }),
-);app.use('/articles',routeArticle)
+app.use('/articles',routeArticle)
 app.use('/users',userRouter)
 app.use(express.static('./public'))
 

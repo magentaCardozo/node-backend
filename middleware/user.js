@@ -1,7 +1,7 @@
 const jwt=require('jsonwebtoken')
 require("dotenv").config();
 
-const jwtSecret=process.env.TOKEN
+const jwtSecret="28d344ad532c7eb15066a7b9ec84be11220274db37e90cfeebc9144d1b32da4608384c"
 
 adminAuth=(req,res,next)=>{
     const token =req.cookies.jwt

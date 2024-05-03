@@ -1,7 +1,8 @@
 const mongoose=require("mongoose")
 
 require("dotenv").config();
-const uri =process.env.MONGO_ATLAS
+// const uri =process.env.MONGO_ATLAS
+const uri ="mongodb+srv://patrickMulu:gEBPiZGaKBO8moBO@thefirstcluster.7wgxqjx.mongodb.net/?retryWrites=true&w=majority&appName=theFirstCluster"
 const database = 'school'; 
 
 const connectionParams={

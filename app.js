@@ -13,6 +13,11 @@ const userRouter=require('./routes/user')
 require("dotenv").config();
 
 const app=express()
+const { createProxyMiddleware } = require('http-proxy-middleware');
+const apiProxy = createProxyMiddleware('/api', {
+  target: 'https://chez-ardi.onrender.com', // Replace with your API endpoint
+  changeOrigin: true,
+});
 const port =process.env.PORT || 5000;
 
 const cors = require('cors');
@@ -33,6 +38,7 @@ app.use(express.json({ limit: '30mb',extended:true }));
 app.use(express.urlencoded({ extended: true, limit: '30mb' }));
 app.use(methodOverride('_method'));
 app.use(express.json());
+app.use('/', apiProxy);
 app.use('/articles',routeArticle)
 app.use('/users',userRouter)
 app.use(express.static('./public'))

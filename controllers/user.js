@@ -66,12 +66,11 @@ const loginUser=(req, res,next)=>{
                 }
                 )
                 
-        res.cookie('jwt', token, {
-  withCredentials: true,
-  httpOnly: false,
-  secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
-  maxAge: maxAge * 1000
-});
+                res.cookie('jwt',token,{
+                    withCredentials: true,
+                    httpOnly: false,
+                    maxAge:maxAge*1000
+                })
                 return res.status(200).json({
                     message:'success',
                     user
@@ -83,6 +82,7 @@ const loginUser=(req, res,next)=>{
         .catch(err=>res.status(400).json({
             status:"Error",
             message:err.message,
+            token
         }))
         
         

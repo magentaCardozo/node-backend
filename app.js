@@ -19,15 +19,14 @@ const port =process.env.PORT || 5000;
 
 const cors = require('cors');
 const corsOptions ={
-    origin:'https://magentacardozo.github.io/', 
+    origin:'https://magentacardozo.github.io', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
 app.use(cors(corsOptions));
-
 app.use(cookieParser())
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://magentacardozo.github.io/');
+  res.setHeader('Access-Control-Allow-Origin', 'https://magentacardozo.github.io');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   next();
 });

@@ -73,7 +73,7 @@ const loginUser=(req, res,next)=>{
                 })
                 return res.status(200).json({
                     message:'success',
-                    user
+                    user, token
                 })
             })
             
@@ -82,7 +82,7 @@ const loginUser=(req, res,next)=>{
         .catch(err=>res.status(400).json({
             status:"Error",
             message:err.message,
-            token
+            
         }))
         
         

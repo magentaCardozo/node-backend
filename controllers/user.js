@@ -89,8 +89,10 @@ const loginUser=(req, res,next)=>{
     }
 
     const checkCoockies=(req,res,next)=>{
+        const {check}=req.body
         try{
-        const token =req.cookies.jwt
+        // const token =req.cookies.jwt
+        const token =check
         // console.log(token)
             if(token){
         jwt.verify(token, jwtSecret,(err, decodedToken)=>{

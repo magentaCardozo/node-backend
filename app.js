@@ -19,7 +19,7 @@ const port =process.env.PORT || 5000;
 
 const cors = require('cors');
 const corsOptions ={
-    origin:'http://localhost:5173', 
+    origin:'https://magentacardozo.github.io/', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }

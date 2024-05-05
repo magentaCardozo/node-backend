@@ -6,8 +6,9 @@ const {getArticles,addArticle,deleteArticle,updateArticle,getArticle}=require('.
 const {upload}=require ('../middleware/articles')
 
 
-// router.route('/').get(getArticles).post(adminAuth,upload.array("image"),addArticle)
-router.route('/').get(getArticles).post(adminAuth,addArticle)
-router.route('/:id').patch(adminAuth,updateArticle).delete(adminAuth,deleteArticle).get(getArticle)
+// router.route('/').get(getArticles).post(adminAuth,addArticle)
+// router.route('/:id').patch(adminAuth,updateArticle).delete(adminAuth,deleteArticle).get(getArticle)
+router.route('/').get(getArticles).post(addArticle)
+router.route('/:id').patch(updateArticle).delete(deleteArticle).get(getArticle)
 
 module.exports=router

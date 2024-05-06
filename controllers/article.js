@@ -104,7 +104,7 @@ const updateArticle=(req, res)=>{
             return res.status(402).json({status:"Error", message:"Aucun article correspondant !"})
         }
 
-        if(image.length===0){
+        if(image[0]===0){
 
             article.name=name
             article.categorie=categorie

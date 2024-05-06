@@ -104,15 +104,28 @@ const updateArticle=(req, res)=>{
             return res.status(402).json({status:"Error", message:"Aucun article correspondant !"})
         }
 
+        if(image.length===0){
+
+            article.name=name
+            article.categorie=categorie
+            article.longName=longName
+            article.price=price
+            article.pricePromo=pricePromo
+            article.slug=slug
+            // article.image=(req.files && req.files.map(file=>file.path))||article.image
+            article.image=article.image
+        }else{
+
+            article.name=name
+            article.categorie=categorie
+            article.longName=longName
+            article.price=price
+            article.pricePromo=pricePromo
+            article.slug=slug
+            // article.image=(req.files && req.files.map(file=>file.path))||article.image
+            article.image=image
+        }
         // ____________
-        article.name=name
-        article.categorie=categorie
-        article.longName=longName
-        article.price=price
-        article.pricePromo=pricePromo
-        article.slug=slug
-        // article.image=(req.files && req.files.map(file=>file.path))||article.image
-        article.image=image
         article.save()
         .then(()=>res.json({status:"Success", message:"not aploaded"}))
         .catch(err=>res.status(401).send({status:"Error", message:"not aploaded"}))

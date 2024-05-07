@@ -14,22 +14,24 @@ const path =require('path')
 
 const getArticles=(req,res)=>{
     Article.find()
-    .then(articles=>{
-        const newArticles=articles.map(article=>{
+    .sort({ _id: -1 }) // Sorting by _id field in descending order
+    .then(articles => {
+        const newArticles = articles.map(article => {
             return {
-                id:article._id,
+                id: article._id,
                 name: article.name,
-                categorie:article.categorie,
-                longName:article.longName,
-                price:article.price,
+                categorie: article.categorie,
+                longName: article.longName,
+                price: article.price,
                 pricePromo: article.pricePromo,
-                slug:article.slug,
-                // image:article.image && [path.basename(article.image[0])]
-                image:article.image && [(article.image[0])]
+                slug: article.slug,
+                image: article.image && [(article.image[0])]
             }
-        })
-        res.json(newArticles)})
-    .catch(err=>res.status(404).json({status:"Error",message:err}))
+        });
+        res.json(newArticles);
+    })
+    .catch(err => res.status(404).json({ status: "Error", message: err }));
+
 }
 const getArticle=(req,res)=>{
     Article.findById(req.params.id,)
